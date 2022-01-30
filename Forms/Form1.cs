@@ -66,5 +66,17 @@ namespace ShanBrowserChromium
                 browser.Load(_urlHandler._url);
             }
         }
+
+        private void einstellungenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Settings settings = new Settings();
+            }
+            catch (Exception exception)
+            {
+                throw new Exception();
+            }
+        }
     }
 }
