@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CefSharp;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,11 @@ namespace ShanBrowserChromium
 {
     public partial class Form1 : Form
     {
-        public CefSharp.WinForms.ChromiumWebBrowser browser = new CefSharp.WinForms.ChromiumWebBrowser("https://google.ch");
+        public CefSharp.WinForms.ChromiumWebBrowser browser =
+            new CefSharp.WinForms.ChromiumWebBrowser("https://google.ch");
+
         private Handler.UrlHandler _urlHandler = new Handler.UrlHandler();
-        private bool _isClicked = false;
+
         public Form1()
         {
             InitializeComponent();
@@ -22,13 +25,13 @@ namespace ShanBrowserChromium
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
         }
 
         private void search_btn_Click(object sender, EventArgs e)
         {
             _urlHandler.ControlUrl(urlField.Text);
             browser.Load(_urlHandler._url);
+            urlField.Text = browser.Address;
         }
 
         private void chromium_Paint(object sender, PaintEventArgs e)
@@ -37,22 +40,31 @@ namespace ShanBrowserChromium
         }
 
 
-        private void urlField_KeyPress(object sender, KeyPressEventArgs e)
+        private void back_btn_Click(object sender, EventArgs e)
         {
-            if (_isClicked)
+            if (browser.CanGoBack)
             {
-                if (e.KeyChar == (char)Keys.Enter)
-                {
-                    _urlHandler.ControlUrl(urlField.Text);
-                    browser.Load(_urlHandler._url);
-                    _isClicked = false;
-                }
+                browser.Back();
+                urlField.Text = browser.Address;
             }
         }
 
-        private void urlField_Click(object sender, MouseEventArgs e)
+        private void forward_btn_Click(object sender, EventArgs e)
         {
-            _isClicked = true;
+            if (browser.CanGoForward)
+            {
+                browser.Forward();
+                urlField.Text = browser.Address;
+            }
+        }
+
+        private void urlField_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                _urlHandler.ControlUrl(urlField.Text);
+                browser.Load(_urlHandler._url);
+            }
         }
     }
 }
