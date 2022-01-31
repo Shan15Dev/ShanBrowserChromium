@@ -8,21 +8,28 @@ namespace ShanBrowserChromium.Handler
 {
     public class UrlHandler
     {
-        public string _url { get; set; }
+        public string Url { get; set; }
+        private string _searchEngine;
+        private SearchMachineHandler _searchMachineHandler = new SearchMachineHandler();
 
         public void ControlUrl(string url)
         {
             if (url.Contains("https://www."))
             {
-                _url = url;
+                Url = url;
             }
-            else if(url.Contains("www.") && !url.Contains("https://"))
+            else if (url.Contains("www.") && !url.Contains("https://"))
             {
-                _url = "https://" + url;
+                Url = "https://" + url;
             }
             else if (url.Contains("."))
             {
-                _url = "https://www." + url;
+                Url = "https://www." + url;
+            }
+            else
+            {
+                _searchEngine = _searchMachineHandler.CheckSearchMachine();
+                Url = _searchEngine + url;
             }
         }
     }
