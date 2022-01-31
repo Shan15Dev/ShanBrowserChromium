@@ -37,6 +37,7 @@ namespace ShanBrowserChromium
         private void chromium_Paint(object sender, PaintEventArgs e)
         {
             this.chromium.Controls.Add(browser);
+            urlField.Text = browser.Address;
         }
 
 
@@ -72,6 +73,7 @@ namespace ShanBrowserChromium
             try
             {
                 Settings settings = new Settings();
+                settings.Show();
             }
             catch (Exception exception)
             {
