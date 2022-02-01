@@ -71,7 +71,7 @@ namespace ShanBrowserChromium
             }
         }
 
-        private void einstellungenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
