@@ -9,13 +9,16 @@ namespace ShanBrowserChromium.Handler
         private const string _fileName = @"C:\Data\ShanBrowser\SearchEngine.txt";
         private const string _directory = @"C:\Data\ShanBrowser";
 
-        public void ChangeSearchMachine(string searchEngine)
+        public void CreateDirectory()
         {
-            
-            if (!Directory.Exists(_directory))
+            if (!Directory.Exists(_directory) && !File.Exists(_fileName))
             {
                 Directory.CreateDirectory(_directory);
+                ChangeSearchMachine("Google");
             }
+        }
+        public void ChangeSearchMachine(string searchEngine)
+        {
 
             if (File.Exists(_fileName))
             {

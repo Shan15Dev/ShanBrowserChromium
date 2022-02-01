@@ -27,6 +27,7 @@ namespace ShanBrowserChromium
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            _searchMachineHandler.CreateDirectory();
             browser = new CefSharp.WinForms.ChromiumWebBrowser(_searchMachineHandler.CheckSearchMachine());
         }
 
