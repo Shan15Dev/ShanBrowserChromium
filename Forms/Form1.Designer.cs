@@ -34,10 +34,10 @@
             this.search_btn = new MetroFramework.Controls.MetroButton();
             this.forward_btn = new MetroFramework.Controls.MetroButton();
             this.back_btn = new MetroFramework.Controls.MetroButton();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.miniToolStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
+            this.miniToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // chromium
@@ -70,11 +70,11 @@
             this.back_btn.Name = "back_btn";
             this.back_btn.Click += new System.EventHandler(this.back_btn_Click);
             // 
-            // menuStrip1
+            // miniToolStrip
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.fileToolStripMenuItem});
-            resources.ApplyResources(this.menuStrip1, "menuStrip1");
-            this.menuStrip1.Name = "menuStrip1";
+            this.miniToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.fileToolStripMenuItem});
+            resources.ApplyResources(this.miniToolStrip, "miniToolStrip");
+            this.miniToolStrip.Name = "miniToolStrip";
             // 
             // fileToolStripMenuItem
             // 
@@ -92,17 +92,18 @@
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.back_btn);
             this.Controls.Add(this.forward_btn);
             this.Controls.Add(this.search_btn);
             this.Controls.Add(this.urlField);
             this.Controls.Add(this.chromium);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.miniToolStrip);
             this.Name = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.urlField_KeyUp);
+            this.miniToolStrip.ResumeLayout(false);
+            this.miniToolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
@@ -110,7 +111,7 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip miniToolStrip;
 
         #endregion
         private System.Windows.Forms.Panel chromium;

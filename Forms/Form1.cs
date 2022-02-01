@@ -15,8 +15,9 @@ namespace ShanBrowserChromium
     public partial class Form1 : Form
     {
         public CefSharp.WinForms.ChromiumWebBrowser browser;
+        
 
-        private Handler.UrlHandler _urlHandler = new Handler.UrlHandler();
+        private UrlHandler _urlHandler = new UrlHandler();
 
         private SearchMachineHandler _searchMachineHandler = new SearchMachineHandler();
 
@@ -29,6 +30,7 @@ namespace ShanBrowserChromium
         {
             _searchMachineHandler.CreateDirectory();
             browser = new CefSharp.WinForms.ChromiumWebBrowser(_searchMachineHandler.CheckSearchMachine());
+
         }
 
         private void search_btn_Click(object sender, EventArgs e)

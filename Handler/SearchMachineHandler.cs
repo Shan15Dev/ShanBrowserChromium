@@ -17,8 +17,15 @@ namespace ShanBrowserChromium.Handler
                 ChangeSearchMachine("Google");
             }
         }
+        
+
         public void ChangeSearchMachine(string searchEngine)
         {
+            
+            if (!Directory.Exists(_directory))
+            {
+                Directory.CreateDirectory(_directory);
+            }
 
             if (File.Exists(_fileName))
             {
