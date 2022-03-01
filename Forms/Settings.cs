@@ -13,11 +13,13 @@ namespace ShanBrowserChromium
         {
             InitializeComponent();
         }
-
-        private void SearchEngineCombobox_SelectedIndexChanged(object sender, EventArgs e)
+        
+        private void submit_btn_Click(object sender, EventArgs e)
         {
             _searchEngineSelected = SearchEngineCombobox.SelectedItem.ToString();
-            _searchMachineHandler.ChangeSearchMachine(_searchEngineSelected);
+            _searchMachineHandler.ChangeSearchMachine(_searchEngineSelected);        
         }
+        
     }
+    
 }

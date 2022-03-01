@@ -1,13 +1,8 @@
 ﻿using CefSharp;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections;
 using System.Windows.Forms;
+using MetroFramework.Controls;
 using ShanBrowserChromium.Handler;
 
 namespace ShanBrowserChromium
@@ -15,11 +10,16 @@ namespace ShanBrowserChromium
     public partial class Form1 : Form
     {
         public CefSharp.WinForms.ChromiumWebBrowser browser;
-        
+
+        private int tabCounter = 2;
 
         private UrlHandler _urlHandler = new UrlHandler();
 
         private SearchMachineHandler _searchMachineHandler = new SearchMachineHandler();
+
+        private HistoryHandler _historyHandler = new HistoryHandler();
+
+
 
         public Form1()
         {
@@ -29,8 +29,8 @@ namespace ShanBrowserChromium
         private void Form1_Load(object sender, EventArgs e)
         {
             _searchMachineHandler.CreateDirectory();
+            _historyHandler.CreateDirectory();
             browser = new CefSharp.WinForms.ChromiumWebBrowser(_searchMachineHandler.CheckSearchMachine());
-
         }
 
         private void search_btn_Click(object sender, EventArgs e)
@@ -42,7 +42,8 @@ namespace ShanBrowserChromium
 
         private void chromium_Paint(object sender, PaintEventArgs e)
         {
-            this.chromium.Controls.Add(browser);
+            tabPage1.Controls.Add(browser);
+            tabPage1.Text = "Welcome";
             urlField.Text = browser.Address;
         }
 
@@ -86,5 +87,23 @@ namespace ShanBrowserChromium
                 throw new Exception();
             }
         }
+
+        private void AddTab_KeyPress(object sender, EventArgs e)
+        {
+            MetroTabPage metroTabPage = new MetroTabPage();
+            metroTabPage.Text = "Welcome";
+            tabs.Controls.Add(metroTabPage);
+            CefSharp.WinForms.ChromiumWebBrowser chromiumWebBrowser =
+                new CefSharp.WinForms.ChromiumWebBrowser(_searchMachineHandler.CheckSearchMachine());
+            chromiumWebBrowser.Parent = tabs;
+            chromiumWebBrowser.Dock = DockStyle.Fill;
+
+        }
+
+        private void tabs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+        
     }
 }

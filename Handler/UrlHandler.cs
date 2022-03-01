@@ -11,10 +11,15 @@ namespace ShanBrowserChromium.Handler
         public string Url { get; set; }
         private string _searchEngine;
         private SearchMachineHandler _searchMachineHandler = new SearchMachineHandler();
+        private HistoryHandler _historyHandler = new HistoryHandler();
 
         public void ControlUrl(string url)
         {
             if (url.Contains("https://www."))
+            {
+                Url = url;
+            }
+            else if (url.Contains("http://"))
             {
                 Url = url;
             }
@@ -31,6 +36,8 @@ namespace ShanBrowserChromium.Handler
                 _searchEngine = _searchMachineHandler.CheckSearchMachine();
                 Url = _searchEngine + url;
             }
+            
+            _historyHandler.InsertIntoHistory(Url);
         }
     }
 }

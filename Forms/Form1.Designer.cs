@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.chromium = new System.Windows.Forms.Panel();
             this.urlField = new MetroFramework.Controls.MetroTextBox();
             this.search_btn = new MetroFramework.Controls.MetroButton();
             this.forward_btn = new MetroFramework.Controls.MetroButton();
@@ -37,14 +36,14 @@
             this.miniToolStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addTab = new MetroFramework.Controls.MetroButton();
+            this.tabs = new MetroFramework.Controls.MetroTabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.chromium = new System.Windows.Forms.Panel();
             this.miniToolStrip.SuspendLayout();
+            this.tabs.SuspendLayout();
+            this.chromium.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // chromium
-            // 
-            resources.ApplyResources(this.chromium, "chromium");
-            this.chromium.Name = "chromium";
-            this.chromium.Paint += new System.Windows.Forms.PaintEventHandler(this.chromium_Paint);
             // 
             // urlField
             // 
@@ -88,11 +87,38 @@
             resources.ApplyResources(this.settingsToolStripMenuItem, "settingsToolStripMenuItem");
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
+            // addTab
+            // 
+            resources.ApplyResources(this.addTab, "addTab");
+            this.addTab.Name = "addTab";
+            this.addTab.Click += new System.EventHandler(this.AddTab_KeyPress);
+            // 
+            // tabs
+            // 
+            resources.ApplyResources(this.tabs, "tabs");
+            this.tabs.Controls.Add(this.tabPage1);
+            this.tabs.Name = "tabs";
+            this.tabs.SelectedIndex = 0;
+            this.tabs.SelectedIndexChanged += new System.EventHandler(this.tabs_SelectedIndexChanged);
+            // 
+            // tabPage1
+            // 
+            resources.ApplyResources(this.tabPage1, "tabPage1");
+            this.tabPage1.Name = "tabPage1";
+            // 
+            // chromium
+            // 
+            resources.ApplyResources(this.chromium, "chromium");
+            this.chromium.Controls.Add(this.tabs);
+            this.chromium.Name = "chromium";
+            this.chromium.Paint += new System.Windows.Forms.PaintEventHandler(this.chromium_Paint);
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.addTab);
             this.Controls.Add(this.back_btn);
             this.Controls.Add(this.forward_btn);
             this.Controls.Add(this.search_btn);
@@ -104,9 +130,17 @@
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.urlField_KeyUp);
             this.miniToolStrip.ResumeLayout(false);
             this.miniToolStrip.PerformLayout();
+            this.tabs.ResumeLayout(false);
+            this.chromium.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.TabPage tabPage1;
+
+        private MetroFramework.Controls.MetroButton addTab;
+
+        private MetroFramework.Controls.MetroTabControl tabs;
 
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;

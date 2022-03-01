@@ -34,6 +34,7 @@ namespace ShanBrowserChromium
             this.SettingsTitleLabe = new MetroFramework.Controls.MetroLabel();
             this.SearchEngineLabel = new MetroFramework.Controls.MetroLabel();
             this.SearchEngineCombobox = new MetroFramework.Controls.MetroComboBox();
+            this.submit_btn = new MetroFramework.Controls.MetroButton();
             this.SuspendLayout();
             // 
             // SettingsTitleLabe
@@ -64,7 +65,16 @@ namespace ShanBrowserChromium
             this.SearchEngineCombobox.Name = "SearchEngineCombobox";
             this.SearchEngineCombobox.Size = new System.Drawing.Size(162, 29);
             this.SearchEngineCombobox.TabIndex = 2;
-            this.SearchEngineCombobox.SelectedIndexChanged += new System.EventHandler(this.SearchEngineCombobox_SelectedIndexChanged);
+            // 
+            // submit_btn
+            // 
+            this.submit_btn.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.submit_btn.Location = new System.Drawing.Point(247, 376);
+            this.submit_btn.Name = "submit_btn";
+            this.submit_btn.Size = new System.Drawing.Size(265, 46);
+            this.submit_btn.TabIndex = 3;
+            this.submit_btn.Text = "Submit";
+            this.submit_btn.Click += new System.EventHandler(this.submit_btn_Click);
             // 
             // Settings
             // 
@@ -72,6 +82,7 @@ namespace ShanBrowserChromium
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.submit_btn);
             this.Controls.Add(this.SearchEngineCombobox);
             this.Controls.Add(this.SearchEngineLabel);
             this.Controls.Add(this.SettingsTitleLabe);
@@ -79,6 +90,8 @@ namespace ShanBrowserChromium
             this.Text = "Settings";
             this.ResumeLayout(false);
         }
+
+        private MetroFramework.Controls.MetroButton submit_btn;
 
         private MetroFramework.Controls.MetroComboBox SearchEngineCombobox;
 
